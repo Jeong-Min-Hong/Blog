@@ -3,12 +3,12 @@ import { Configuration, OpenAIApi } from "openai";
 import { useEffect, useState } from 'react';
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 async function getImg() {
     const response = await openai.createImage({
-        prompt: "cherry blossom load",
+        prompt: "beach",
         n: 1,
         size: "1024x1024",
     });

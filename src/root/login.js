@@ -1,13 +1,15 @@
-import LoginBtn from "../component/loginBtn";
+import LoginForm from "../component/loginForm";
 import LoginIntro from "../component/loginIntro";
 import './login.css';
 
 function Login() {
 
     return (
-        <div className='container'>
-            <LoginBtn />
-            <LoginIntro />
+        <div className="login">
+            <div className='container'>
+                <LoginIntro />
+                <LoginForm />
+            </div>
         </div>
     )
 }

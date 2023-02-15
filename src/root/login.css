@@ -10,6 +10,16 @@ body {
 
 .container {
     display: flex;
+    width: 70vw;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10% 2% 10% 2%;
+    overflow: hidden;
+}
+
+.login {
+    display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
