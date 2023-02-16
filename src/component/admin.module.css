@@ -4,6 +4,7 @@
     height: 70vh;
     background: url(../img/temporary.jpg);
     background-repeat: no-repeat;
+    background-size: 100%;
     overflow: hidden;
     align-items: center;
     justify-content: center;
@@ -22,4 +23,8 @@
     background-color: silver;
     border-radius: 50%;
     transform: translateY(-50px);
+}
+
+.adminWorkspace {
+    display: flex;
 }

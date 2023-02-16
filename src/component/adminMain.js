@@ -1,10 +1,17 @@
-
+import adminStyle from './admin.module.css';
 
 function AdminMain() {
 
     return (
         <main>
-            gg
+            <div className= {adminStyle.adminWorkspace}>
+                <section className={adminStyle.postCategory}>
+                    a
+                </section>
+                <section className={adminStyle.postList}>
+                    b
+                </section>
+            </div>
         </main>
     );
 }
