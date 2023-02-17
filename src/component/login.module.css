@@ -4,11 +4,21 @@
     width: 50%;
     height: 100%;
     align-items: center;
-    background-color: silver;
+    background-image: url(../img/loginBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
     font-family: sans-serif;
+    animation: introLeftToRight 100s infinite ease-out;
+}
+
+@keyframes introLeftToRight {
+    from {
+        background-position-x: 0%;
+    } 
+    to {
+        background-position-x: 70%;
+    }
 }
 
 .intro {
