@@ -26,5 +26,38 @@
 }
 
 .adminWorkspace {
+    position: relative;
     display: flex;
+    justify-content: center;
+    margin: 7em;
+}
+
+.adminPostContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.createPost {
+
+}
+
+.adminSideCate {
+    position: absolute;
+    width: 200px;
+    height: 800px;
+    top: 10em;
+    left: 5%;
+    line-height: 2em;
+}
+
+.adminWorkCate {
+    display: flex;
+    font-size: xx-large;
+}
+
+.adminWorkCate div {
+    display: flex;
+    width: 4em;
+    justify-content: center;
 }
