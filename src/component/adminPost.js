@@ -15,7 +15,7 @@ export default function AdminPost() {
 
     return (
         <section className={adminStyle.postList}>
-            <div>
+            <div className={adminStyle.adminWorkFrame}>
                 <div className={adminStyle.adminWorkCate}>
                     <div onClick={onClickPost}>
                         <span>글</span>

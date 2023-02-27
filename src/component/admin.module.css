@@ -29,48 +29,21 @@
     position: relative;
     display: flex;
     justify-content: center;
-    margin: 7em;
+    margin-block-start: 7em;
+}
+.adminWorkFrame {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    justify-content: center;
+    align-items: center;
 }
 
 .adminPostContent {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
-}
-
-.postBlock {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    position: relative;
-}
-
-.cateArrowBtn {
-    position: relative;
-    float: right;
-    margin-right: 4px;
-    width: 15px;
-    height: 15px;
-    background-size: contain;
-    background-image: url(../img/arrow.png);
-}
-
-.cateMoreBtn {
-    position: relative;
-    margin-left: auto;
-    width: 30px;
-    height: 30px;
-    background-size: contain;
-    background-image: url(../img/more.png);
-}
-
-.adminSideCate {
-    position: absolute;
-    width: 200px;
-    height: 800px;
-    top: 10em;
-    left: 5%;
-    line-height: 2em;
 }
 
 .adminWorkCate {
@@ -82,4 +55,52 @@
     display: flex;
     width: 4em;
     justify-content: center;
+}
+
+/* 관리자 사이트 사이드 바 */
+.adminSideCate {
+    position: absolute;
+    width: 15vw;
+    height: 800px;
+    left: 3vw;
+    top: 10em;
+    line-height: 2em;
+}
+
+@media (max-width: 800px) {
+    
+}
+
+.adminPostContent div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-block: 50px;
+    height: 300px;
+}
+
+.postBlock {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.addCate {
+    position: relative;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-image: url(../img/add.png);
+    cursor: pointer;
+}
+
+.cateArrowBtn {
+    position: relative;
+    margin-right: 4px;
+    width: 10px;
+    height: 10px;
+    background-size: contain;
+    background-image: url(../img/arrow.png);
 }
