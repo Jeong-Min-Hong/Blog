@@ -38,8 +38,30 @@
     justify-content: center;
 }
 
-.createPost {
+.postBlock {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
 
+.cateArrowBtn {
+    position: relative;
+    float: right;
+    margin-right: 4px;
+    width: 15px;
+    height: 15px;
+    background-size: contain;
+    background-image: url(../img/arrow.png);
+}
+
+.cateMoreBtn {
+    position: relative;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-image: url(../img/more.png);
 }
 
 .adminSideCate {

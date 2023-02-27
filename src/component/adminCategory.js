@@ -1,15 +1,32 @@
 import adminStyle from './admin.module.css';
 
-export default function AdminCategory() {
+class postCateNode {
+    constructor(key, value, parents, child) {
+        this.key = key;
+        this.value = value;
+        this.parents = parents;
+        this.child = child;    
+    }
+};
 
+export default function AdminCategory() {
+ 
+    function onCreateDir() {
+        
+    }
 
     return (
         <section className={adminStyle.adminSideCate}>
             <span>목록</span>
             <hr />
-            <div>dir1</div>
-            <div>dir2</div>
-            <div>dir3</div>
+            <div className={adminStyle.postBlock}>
+                <div className={adminStyle.cateArrowBtn}></div>
+                <div>value</div>
+                <div className={adminStyle.cateMoreBtn}>
+                    <div>추가</div>
+                    <div>삭제</div>
+                </div>
+            </div>
         </section>
     )
 }
