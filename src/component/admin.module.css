@@ -64,11 +64,8 @@
     height: 800px;
     left: 3vw;
     top: 10em;
-    line-height: 2em;
-}
-
-@media (max-width: 800px) {
-    
+    font-family: sans-serif;
+    line-height: 1.5em;
 }
 
 .adminPostContent div {
@@ -84,6 +81,24 @@
     align-items: center;
     flex-direction: row;
     position: relative;
+    cursor: pointer;
+}
+
+.postBlock:hover {
+    background-color: silver;
+}
+
+.catePostTitle {
+    width: 90%;
+    overflow: hidden;
+}
+
+.makePostBlock {
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    position: relative;
+    padding-block: 5px;
 }
 
 .addCate {
@@ -102,5 +117,14 @@
     width: 10px;
     height: 10px;
     background-size: contain;
+    background-repeat: no-repeat;
     background-image: url(../img/arrow.png);
+}
+
+.newCateTitle {
+    width: 100%;
+    margin-right: 5px;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }

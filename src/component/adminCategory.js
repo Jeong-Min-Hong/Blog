@@ -1,5 +1,6 @@
 import adminStyle from './admin.module.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 class postCateNode {
     constructor(key, title, parents, child) {
@@ -11,46 +12,58 @@ class postCateNode {
 };
 
 export default function AdminCategory() {
-    const [cateData, setCateDate] = useState([]);
-    const [titling, setTitling] = useState(true);
+    const [cateData, setCateData] = useState([]);
+    const [titling, setTitling] = useState(false);
+    const location = useLocation();
+
+    useEffect(() => {
+        cateData.map((data) => {
+            data.key === parseFloat(location.search.slice(1)) ? console.log(data.title) : console.log();
+        });
+    }, [location, cateData]);
 
     function onCreatePost(e) {
-        setTitling(false);
-        const postCateBlock = new postCateNode(Math.random(), "", "", []);
-        setCateDate(prev => [...prev, postCateBlock]);
-        console.log(titling);
+        setTitling(true);
     }
 
     function onSubmitTitle(e) {
-        
-        if(e.key !== 'Enter') {
+        if (e.key === 'Escape')
+            setTitling(false);
+        if (e.key !== 'Enter') {
 
         } else {
-            setTitling(1);
+            const postCateBlock = new postCateNode(Math.random(), e.target.value, "", []);
+            setCateData(prev => [...prev, postCateBlock]);
+            console.log(postCateBlock);
+            setTitling(false);
         }
     }
 
     return (
-        <section className={adminStyle.adminSideCate}>
-            <div className={adminStyle.postBlock}>
+        <aside className={adminStyle.adminSideCate}>
+            <div className={adminStyle.postBlock} style={{ borderBottom: "1px solid silver", alignItems: "center" }}>
                 <div>목록</div>
                 <div className={adminStyle.addCate} onClick={onCreatePost}></div>
             </div>
-            <hr />
-            {titling ? <div></div> : 
-                <div className={adminStyle.postBlock}>
-                    <div className={adminStyle.cateArrowBtn}></div>
-                    <input onKeyDown={onSubmitTitle}></input>
-                </div>}
-
             {cateData.map((value) => {
                 return (
-                    <div key={value.key} className={adminStyle.postBlock}>
-                        <div className={adminStyle.cateArrowBtn}></div>
-                        <div>value.title</div>
-                    </div>
+                    <Link key={value.key} to={`/admin?${value.key}`} >
+                        <div key={value.key} className={adminStyle.postBlock}>
+                            <div className={adminStyle.cateArrowBtn}></div>
+                            <div className={adminStyle.catePostTitle}>{value.title}</div>
+                        </div>
+                    </Link>
                 )
             })}
-        </section>
+            {titling ?
+                <div className={adminStyle.makePostBlock}>
+                    <div className={adminStyle.cateArrowBtn}></div>
+                    <input
+                        className={adminStyle.newCateTitle}
+                        placeholder="이름을 정해주세요"
+                        maxLength={18}
+                        onKeyDown={onSubmitTitle}></input>
+                </div> : null}
+        </aside>
     )
 }
