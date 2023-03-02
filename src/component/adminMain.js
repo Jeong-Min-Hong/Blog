@@ -3,7 +3,6 @@ import AdminCategory from './adminCategory';
 import AdminPost from './adminPost';
 
 function AdminMain() {
-
     return (
         <main>
             <div className= {adminStyle.adminWorkspace}>
