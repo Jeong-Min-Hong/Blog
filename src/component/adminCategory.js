@@ -18,13 +18,11 @@ export default function AdminCategory() {
     const focusInput = useRef();
     const nav = useNavigate();
     const location = useLocation();
-
     useEffect(() => {
         let curCate;
         cateData.map((data) => {
             return data.key === parseFloat(location.search.slice(1)) ? curCate = data.title : console.log();
         });
-        console.log(curCate);
     }, [location, cateData]);
 
     useEffect(() => {
@@ -34,11 +32,16 @@ export default function AdminCategory() {
     function onCheckTitle(e) {
         setTitling(true); 
     }
-
+    console.log(cateData);
     function enterTitle(e) {
-        const postCateBlock = new postCateNode(Math.random(), e.target.value, "", []);
+        const postCateBlock = new postCateNode(Math.random(), e.target.value, location.search.slice(1), []);
         setCateData(prev => [...prev, postCateBlock]);
         nav(`?${postCateBlock.key}`);
+
+        cateData.map((data) => {
+            return data.key === parseFloat(location.search.slice(1)) ? data.child.push(postCateBlock.key) :null;
+        });
+
         setTitling(false);
     }
 
