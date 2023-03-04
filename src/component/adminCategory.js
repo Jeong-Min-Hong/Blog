@@ -57,7 +57,7 @@ export default function AdminCategory() {
             </div>
             {cateData.map((value) => {
                 return (
-                    <Link key={value.key} to={`/admin?${value.key}`} >
+                    <Link key={value.key} to={`/admin?${value.key}`} style={{textDecoration: "none", color: "black"}} >
                         <div key={value.key} className={adminStyle.postBlock}>
                             <div className={adminStyle.cateArrowBtn}></div>
                             <div className={adminStyle.catePostTitle}>{value.title}</div>
