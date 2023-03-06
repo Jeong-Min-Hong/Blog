@@ -1,3 +1,8 @@
+.noLinkDeco {
+    text-decoration: none;
+    color: black;
+}
+
 .logoFrame {
     display: flex;
     width: 100vw;

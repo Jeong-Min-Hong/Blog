@@ -12,17 +12,21 @@ class postCateNode {
 };
 
 export default function AdminCategory() {
+    const [cateTree, setCateTree] = useState([]);
     const [cateData, setCateData] = useState([]);
     const [titling, setTitling] = useState(false);
 
     const focusInput = useRef();
     const nav = useNavigate();
     const location = useLocation();
+
+    console.log(cateTree);
+
     useEffect(() => {
-        let curCate;
         cateData.map((data) => {
-            return data.key === parseFloat(location.search.slice(1)) ? curCate = data.title : console.log();
+            return data.key === parseFloat(location.search.slice(1)) ? console.log(data.title) : null;
         });
+
     }, [location, cateData]);
 
     useEffect(() => {
@@ -30,41 +34,59 @@ export default function AdminCategory() {
     }, [titling]);
 
     function onCheckTitle(e) {
-        setTitling(true); 
+        e.preventDefault();
+        e.stopPropagation();
+        setTitling(true);
     }
-    console.log(cateData);
+
     function enterTitle(e) {
+        //카테고리 블록 생성
         const postCateBlock = new postCateNode(Math.random(), e.target.value, location.search.slice(1), []);
-        setCateData(prev => [...prev, postCateBlock]);
+
+        //CateTree변수에 트리형태로 PostBlock 저장
+        location.search.slice(1) === "" ? setCateTree(prev => [...prev, postCateBlock]) : console.log();
+        //CateData에 postBlock 저장. 클릭한 것을 map함수 중첩 없이 빠르게 찾기위해
+        setCateData((prev) => [...prev, postCateBlock]);
         nav(`?${postCateBlock.key}`);
 
-        cateData.map((data) => {
-            return data.key === parseFloat(location.search.slice(1)) ? data.child.push(postCateBlock.key) :null;
+        cateTree.map((data) => {
+            return data.key === parseFloat(location.search.slice(1)) ? data.child.push(postCateBlock) : null;
         });
-
         setTitling(false);
     }
 
     function onSubmitTitle(e) {
         if (e.key === 'Escape')
             setTitling(false);
-        else if (e.key === 'Enter') 
+        else if (e.key === 'Enter')
             enterTitle(e);
     }
 
     return (
         <aside className={adminStyle.adminSideCate}>
-            <div className={adminStyle.postBlock} style={{ borderBottom: "1px solid silver", alignItems: "center" }}>
-                <div>목록</div>
-                <div className={adminStyle.addCate} onClick={onCheckTitle}></div>
-            </div>
-            {cateData.map((value) => {
+            <Link to="/admin" className={adminStyle.noLinkDeco}>
+                <div className={adminStyle.postBlock} style={{ borderBottom: "1px solid silver", alignItems: "center" }}>
+                    <div >목록</div>
+                    <div className={adminStyle.addCate} onClick={onCheckTitle}></div>
+                </div>
+            </Link>
+            {cateTree.map((node) => {
                 return (
-                    <Link key={value.key} to={`/admin?${value.key}`} style={{textDecoration: "none", color: "black"}} >
-                        <div key={value.key} className={adminStyle.postBlock}>
+                    <Link key={node.key} to={`/admin?${node.key}`} className={adminStyle.noLinkDeco}>
+                        <div key={node.key} className={adminStyle.postBlock}>
                             <div className={adminStyle.cateArrowBtn}></div>
-                            <div className={adminStyle.catePostTitle}>{value.title}</div>
+                            <div className={adminStyle.catePostTitle}>{node.title}</div>
                         </div>
+                        {node.child.length !== 0 ? node.child.map((node) => {
+                            return (
+                                <Link key={node.key} to={`/admin?${node.key}`} className={adminStyle.noLinkDeco}>
+                                    <div key={node.key} className={adminStyle.postBlock} style={{paddingLeft: "1em"}}>
+                                        <div className={adminStyle.cateArrowBtn}></div>
+                                        <div className={adminStyle.catePostTitle}>{node.title}</div>
+                                    </div>
+                                </Link>
+                            );
+                        }) : console.log()}
                     </Link>
                 )
             })}
