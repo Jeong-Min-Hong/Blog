@@ -91,6 +91,16 @@
 
 .postBlock:hover {
     background-color: silver;
+    margin-block: 1px;
+}
+
+.focusPostBlock {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    cursor: pointer;
+    background-color: silver;
 }
 
 .catePostTitle {
