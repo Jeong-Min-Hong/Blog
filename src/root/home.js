@@ -3,7 +3,8 @@ import { useState } from 'react';
 export default function Home() {
     const [num, setNum] = useState(0);
 
-    function addNum() {
+    function addNum(e) {
+        console.log(e);
         setNum((prev) => prev + 1);
     }
 
