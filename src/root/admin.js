@@ -1,6 +1,5 @@
 import AdminLogoImg from '../component/adminLogoImg';
 import AdminMain from '../component/adminMain';
-import { useEffect, useState } from 'react';
 import './admin.css';
 
 function Admin() {
